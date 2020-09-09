@@ -42,6 +42,9 @@ def NewtonMethod(p_initial, t, n):
     i = 1
     x = sym.symbols('x')
     while (i <= n):
+        if (derivative(f(x), p_initial, 1) <= 10**-15):
+            print('division by zero error')
+            break
         p = p_initial - (f(p_initial) / derivative(f(x), p_initial, 1))
         p = float(p)
         if (abs(p - p_initial) < t):
